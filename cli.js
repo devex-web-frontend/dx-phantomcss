@@ -7,10 +7,10 @@ var glob = require('glob');
 var root = path.dirname(__filename);
 var cwd = process.cwd();
 
-var PHANTOMJS_EXECUTABLE = path.resolve('node_modules', 'casperjs', 'node_modules', '.bin', 'phantomjs');
+var PHANTOMJS_EXECUTABLE = path.resolve(root, 'node_modules', 'casperjs', 'node_modules', '.bin', 'phantomjs');
 process.env['PHANTOMJS_EXECUTABLE'] = PHANTOMJS_EXECUTABLE;
 
-var CASPERJS_EXECUTABLE = path.resolve('node_modules', '.bin', 'casperjs');
+var CASPERJS_EXECUTABLE = path.resolve(root, 'node_modules', '.bin', 'casperjs');
 if (process.platform === 'win32') {
 	CASPERJS_EXECUTABLE += '.cmd';
 }
