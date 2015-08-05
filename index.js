@@ -5,7 +5,7 @@ var phantomcss = require('phantomcss');
 module.exports = {
 	resolveRelative: resolveRelative,
 	findRelative: findRelative,
-	captureSelector: captureSelector
+	stripSelector: stripSelector
 };
 
 /**
@@ -38,11 +38,12 @@ function findRelative(relative) {
 }
 
 /**
- * Takes screenshot based on selector name and modifier
+ * Gets file name from selector replacing non-word characters
  * @param {String} selector
  * @param {String} [modifier]
+ * @returns {String} filename
  */
-function captureSelector(selector, modifier) {
+function stripSelector(selector, modifier) {
 	modifier = modifier ? ('_' + modifier) : '';
-	phantomcss.screenshot(selector, selector.replace(/\W/g, '_') + modifier);
+	return selector.replace(/\W/g, '_') + modifier;
 }
