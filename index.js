@@ -16,8 +16,6 @@ module.exports = {
 function resolveRelative(relative) {
 	var old = fs.workingDirectory;
 	var current = fs.absolute(system.args[4]); //do not change arguments order to casperjs!
-	console.log(system.args);
-	console.log('\n\n', current, '\n\n');
 	current = current.substr(0, current.lastIndexOf('/')); //do not use fs.separator
 	fs.changeWorkingDirectory(current);
 	var result = fs.absolute(relative);
