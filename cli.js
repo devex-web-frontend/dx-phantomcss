@@ -32,8 +32,3 @@ var casper = cp.execFile(CASPERJS_EXECUTABLE, argv);
 
 casper.stdout.on('data', console.log.bind(console));
 casper.stderr.on('data', console.error.bind(console));
-casper.on('close', function(code) {
-	if (code !== 0) {
-		throw new Error(CASPERJS_EXECUTABLE + ' exited with code ', code);
-	}
-});
