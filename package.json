@@ -1,0 +1,20 @@
+{
+  "name": "dx-phantom",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "cli.js",
+  "scripts": {
+    "test": "npm run eslint",
+    "eslint": "eslint --config ./node_modules/eslint-config-dx/.eslintrc --ext .js ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "casperjs": "^1.1.0-beta3",
+    "eslint": "^0.24.1",
+    "eslint-config-dx": "devex-web-frontend/eslint-config-dx",
+    "glob": "^5.0.14",
+    "phantomcss": "raveclassic/PhantomCSS"
+  }
+}
