@@ -19,6 +19,7 @@ var argv = process.argv.slice(2);
 if (argv.length === 0) {
 	throw new Error('Please specify some arguments!');
 }
+
 //iterate over argv and expand if glob
 argv = argv.map(function(arg) {
 	if (glob.hasMagic(arg)) {
@@ -27,6 +28,13 @@ argv = argv.map(function(arg) {
 		return arg;
 	}
 });
+
+var hasIncludes = argv.some(function(arg) {
+	return arg.indexOf('--includes') === 0;
+});
+if (!hasIncludes) {
+	argv.push('--includes=' + path.resolve(root, 'casperjs', 'includes.js'));
+}
 
 var casper = cp.execFile(CASPERJS_EXECUTABLE, argv);
 
