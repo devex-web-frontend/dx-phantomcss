@@ -29,13 +29,6 @@ argv = argv.map(function(arg) {
 	}
 });
 
-var hasIncludes = argv.some(function(arg) {
-	return arg.indexOf('--includes') === 0;
-});
-if (!hasIncludes) {
-	argv.push('--includes=' + path.resolve(root, 'casperjs', 'includes.js'));
-}
-
 var casper = cp.execFile(CASPERJS_EXECUTABLE, argv);
 
 casper.stdout.on('data', console.log.bind(console));
