@@ -16,6 +16,7 @@ module.exports = {
 function resolveRelative(relative) {
 	var old = fs.workingDirectory;
 	//FIXME!!! research how to get current test script path! now it can be easily broken if you change args order
+	//TODO: take path from casper.test.currentTestFile
 	var current = fs.absolute(system.args[4]); //do not change arguments order to casperjs!
 	current = current.substr(0, current.lastIndexOf('/')); //do not use fs.separator
 	fs.changeWorkingDirectory(current);
