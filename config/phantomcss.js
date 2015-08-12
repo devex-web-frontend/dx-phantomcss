@@ -27,6 +27,7 @@ var config = {
 		tests.forEach(function(test) {
 			//this function is a pain in the ass... facepalm, PhantomCSS
 			//TODO: reimplement file operations in PhantomCSS
+			//TODO: update to support filename suffixes (PhantomCSS 0.10.4)
 			var diff = fs.absolute(test.filename.replace(/\.png$/, '.diff.png'));
 			var overwrite = fs.absolute(test.filename.replace(this.comparisonResultRoot, this.screenshotRoot));
 			if (fs.exists(diff)) {
