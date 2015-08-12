@@ -42,7 +42,7 @@ var config = {
 };
 
 var replaced = false;
-if (!replaced && casper) {
+if (!replaced && typeof casper !== 'undefined') {
 	replaced = true;
 	var oldBegin = casper.test.begin;
 	var failedComparisonsRoot = config.failedComparisonsRoot;
