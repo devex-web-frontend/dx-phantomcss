@@ -1,4 +1,5 @@
 var fs = require('fs');
+var util = require('..');
 
 var count = 0;
 
@@ -15,7 +16,7 @@ var config = {
 		// files must exist under root
 		// and use the .diff convention
 		//override filename to contain current test suite name
-		var name = root + '/' + casper.test.currentSuite.name + '/' + count + '_' + filename;
+		var name = root + '/' + util.stripSelector(casper.test.currentSuite.name) + '/' + count + '_' + filename;
 		count++;
 		if (fs.isFile(name + '.png')) {
 			return name + '.diff.png'; //this is from PhantomCSS!
@@ -39,5 +40,18 @@ var config = {
 		});
 	}
 };
+
+var replaced = false;
+if (!replaced) {
+	replaced = true;
+	var oldBegin = casper.test.begin;
+	var failedComparisonsRoot = config.failedComparisonsRoot;
+	casper.test.begin = function(test) {
+		phantomcss.update({
+			failedComparisonsRoot: failedComparisonsRoot + '/' + util.stripSelector(test)
+		});
+		return oldBegin.apply(this, arguments);
+	};
+}
 
 module.exports = config;
