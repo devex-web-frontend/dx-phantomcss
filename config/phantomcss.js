@@ -1,5 +1,4 @@
 var fs = require('fs');
-var util = require('..');
 
 var count = 0;
 
@@ -12,6 +11,7 @@ var config = {
 	prefixCount: true,
 	addLabelToFailedImage: false,
 	fileNameGetter: function fileNameGetter(root, filename) {
+		var util = require('..');
 		// globally override output filename
 		// files must exist under root
 		// and use the .diff convention
@@ -47,6 +47,7 @@ if (!replaced) {
 	var oldBegin = casper.test.begin;
 	var failedComparisonsRoot = config.failedComparisonsRoot;
 	casper.test.begin = function(test) {
+		var util = require('..');
 		phantomcss.update({
 			failedComparisonsRoot: failedComparisonsRoot + '/' + util.stripSelector(test)
 		});
